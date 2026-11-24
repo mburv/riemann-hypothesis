@@ -115,9 +115,13 @@ def hForm (k₀ : K) (j : ∀ k, J k) : MRing J :=
 theorem gForm_homog (k₀ : K) (i : J k₀) (e : ℕ) {G : K → MvPolynomial (J k₀) ℤ} {d : K → ℕ}
     (hG : ∀ k, (G k).IsHomogeneous (d k)) :
     IsMultiHomog (gForm k₀ i e G) (Pi.single k₀ (e + ∑ k ∈ Finset.univ.erase k₀, d k)) := by
-  have h := GroundTheory.Heights₂.Heights.HilbertSamuel.isMultiHomog_mul (isMultiHomog_pow (isMultiHomog_X' k₀ i : IsMultiHomog (X ⟨k₀, i⟩ : MRing J) _) e)
-    (isMultiHomog_prod (Finset.univ.erase k₀) (fun k => rename (Sigma.mk k₀) (G k))
-      (fun k => Pi.single k₀ (d k)) fun k => homog_rename k₀ (hG k))
+  have h := _root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_mul
+      (_root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_pow
+        (_root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_X' k₀ i :
+          IsMultiHomog (X ⟨k₀, i⟩ : MRing J) _) e)
+      (_root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_prod
+        (Finset.univ.erase k₀) (fun k => rename (Sigma.mk k₀) (G k))
+        (fun k => Pi.single k₀ (d k)) fun k => homog_rename k₀ (hG k))
   rw [gForm]
   convert h using 1
   funext k'
@@ -129,8 +133,10 @@ theorem gForm_homog (k₀ : K) (i : J k₀) (e : ℕ) {G : K → MvPolynomial (J
 def hDeg (k₀ : K) : K → ℕ := fun k => if k = k₀ then 0 else 1
 
 theorem hForm_homog (k₀ : K) (j : ∀ k, J k) : IsMultiHomog (hForm k₀ j) (hDeg k₀) := by
-  have h := isMultiHomog_prod (Finset.univ.erase k₀) (fun k => (X ⟨k, j k⟩ : MRing J))
-      (fun k => Pi.single k 1) fun k => isMultiHomog_X' k (j k)
+  have h := _root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_prod
+      (Finset.univ.erase k₀) (fun k => (X ⟨k, j k⟩ : MRing J))
+      (fun k => Pi.single k 1) fun k =>
+        _root_.ReciprocityTheory.ChartRestriction.G.ArakelovGeometry.isMultiHomog_X' k (j k)
   rw [hForm]
   convert h using 1
   funext k'

@@ -31,6 +31,7 @@ public import Development.AbelianVarietyTheory.Proofs.SatakeParameters.Bundle019
 
 -- bundled from Development.AutomorphicArithmetic.AutomorphicVarieties.PadicHodgeTheory.CrystallineTransferSurjection
 section
+attribute [-instance] GlobalTheory.LGrp.locallyCompact_GL GlobalTheory.SplitFlip.locallyCompact_GL GlobalTheory.SplitFlip.secondCountable_GL GlobalTheory.SplitFlip.t2Space_general_linear_group
 open Formalism.WeaklyAdmissibleFiltrations Formalism.MainNotions.N Formalism.BasicNotions Formalism.BasicNotions.Loc ReciprocityTheory.Gal TensorProduct Module UpperTheory.V.Loc Topology
 
 private theorem crystalline_transfer_surjection {l : ℕ} [Fact l.Prime] {G G' A A' V V' : Type} [Group G] [Group G'] [CommRing A]

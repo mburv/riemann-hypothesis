@@ -49,7 +49,7 @@ theorem coefficient_mul_a_eq_one (d : HermitianOrthogonalExtensionData A B 1 1) 
 
 theorem crd_emb (d : HermitianOrthogonalExtensionData A B 1 1) : crd d * emb d = 0 := by
   have h := congrArg (cT σ) d.perp
-  rw [cT_mul, cT_mul, gram_herm, cT_cT] at h
+  rw [cT_mul, cT_mul, gram_herm, GlobalTheory.AutFunCounterexample.cT_cT] at h
   have h0 : cT σ (0 : Matrix (Fin A.rank) (Fin 1) D.host.E) = 0 := by
     ext i j; simp [cT]
   rw [h0, ← Matrix.mul_assoc] at h
@@ -95,7 +95,7 @@ theorem exists_pt (d : HermitianOrthogonalExtensionData A B 1 1) (h : GA D A) :
     rw [prj, ← Matrix.mul_assoc, Matrix.mul_nonsing_inv _ (gram_unit A), Matrix.one_mul]
   have q1 : B.gram * emb d = cT σ (prj d) * A.gram := by
     have := congrArg (cT σ) q2
-    rwa [cT_mul, cT_mul, gram_herm, cT_cT, gram_herm] at this
+    rwa [cT_mul, cT_mul, gram_herm, GlobalTheory.AutFunCounterexample.cT_cT, gram_herm] at this
   exact exists_ext (R := AF D.host.F) D.sp.cm.sig B.gram A.gram (emb d) (prj d) q1 q2 (prj_emb d) h
 
 section Ext

@@ -51,6 +51,7 @@ public import Development.AbelianVarietyTheory.Proofs.HomogeneousIdeals.AddMonoi
 
 -- bundled from Development.AbelianVarietyTheory.Proofs.DivisorProofs.ReproducingIdentityExtendsHarishChandraSpan
 section
+attribute [-instance] GlobalTheory.LGrp.locallyCompact_GL GlobalTheory.SplitFlip.locallyCompact_GL GlobalTheory.SplitFlip.secondCountable_GL GlobalTheory.SplitFlip.t2Space_general_linear_group
 open NumberField MeasureTheory GlobalTheory.CuspRep GlobalTheory.HCF Topology
 open scoped ContDiff
 
